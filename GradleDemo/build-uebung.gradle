@@ -1,0 +1,22 @@
+task helloWorld(description: 'Prints "Hello world"') << {
+	println 'Hello world'
+}
+
+task sayHiTwice(dependsOn: helloWorld, description: 'Prints "Hi" twice') << {
+	2.times {
+		println 'Hi'
+	}
+}
+
+2.times {
+	task "sayBye$it" << {
+		println 'Bye'
+	}
+}
+
+sayBye1.dependsOn sayBye0
+sayBye0 {
+	dependsOn {
+		sayHiTwice
+	}
+}

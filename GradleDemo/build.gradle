@@ -1,0 +1,18 @@
+apply plugin: 'application'
+
+version = 1.0
+mainClassName = 'org.gradle.Person'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+	testCompile 'junit:junit:4+'
+}
+
+sourceSets {
+	main.java.srcDirs = ['src/test/java']
+	test.java.srcDirs = ['src/main/java']
+}
